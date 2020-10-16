@@ -9,13 +9,14 @@ public class BurgerTest {
     public void should_create_plain_burger_with_default_breadType_white_meatType_beef() {
         Burger plainBurger = new PlainBurger.Builder().build();
 
-        String expectedBreadType = "WHITE";
-        String expectedMeatType = "BEEF";
+        Burger.BreadType expectedBread = Burger.BreadType.WHITE;
+        Burger.BreadType actualBread = plainBurger.getBread();
 
-        String actualBreadType = plainBurger.getBreadType();
-        String actualMeatType = plainBurger.getMeatType();
+        Assert.assertEquals(actualBread, expectedBread);
 
-        Assert.assertEquals(expectedBreadType, actualBreadType);
-        Assert.assertEquals(expectedMeatType, actualMeatType);
+        Burger.MeatType expectedMeat = Burger.MeatType.BEEF;
+        Burger.MeatType actualMeat = plainBurger.getMeat();
+
+        Assert.assertEquals(actualMeat, expectedMeat);
     }
 }
