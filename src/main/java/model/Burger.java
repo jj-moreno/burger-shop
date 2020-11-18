@@ -1,35 +1,54 @@
 package model;
 
-public abstract class Burger {
+import java.util.Objects;
 
+public class Burger {
 
     protected enum BreadType { WHITE, WHEAT, RYE, SOURDOUGH }
     protected final BreadType bread;
     public enum MeatType { BEEF, CHICKEN, BLACK_BEAN }
     protected final MeatType meat;
 
-    protected abstract BreadType getBread();
-    protected abstract MeatType getMeat();
-
     protected Burger(Builder builder) {
         this.bread = builder.bread;
-        meat = builder.meat;
+        this.meat = builder.meat;
     }
 
-    private Burger() {
+    protected Burger() {
         this.bread = BreadType.WHITE;
         this.meat = MeatType.BEEF;
     }
 
-    public final static Builder getPlainInstance() {
-       return new PlainBurger.Builder();
-    }
-
-
-    protected abstract static class Builder {
+    protected static class Builder {
         protected BreadType bread;
         protected MeatType meat;
 
-        abstract Burger build();
+        protected Builder(BreadType bread, MeatType meat) {
+            this.bread = bread;
+            this.meat = meat;
+        }
+
+        protected Builder() {
+            this.bread = BreadType.WHITE;
+            this.meat = MeatType.BEEF;
+        }
+
+        protected Burger build() {
+            return new Burger(this);
+        }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Burger burger = (Burger) o;
+        return bread == burger.bread &&
+                meat == burger.meat;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(bread, meat);
     }
 }
