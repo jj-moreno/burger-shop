@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Burger Maker</title>
+</head>
+<body>
+<form action="/burgerConfirmed" th:object="${builder}" method="post">
+    <select th:field="*{bread}">
+        <option value="white">White</option>
+        <option value="wheat">Wheat</option>
+    </select>
+    <select th:field="*{meat}">
+        <option value="beef">Beef</option>
+        <option value="chicken">Chicken</option>
+    </select>
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
