@@ -24,8 +24,8 @@ public class Burger {
 
 
     public static class Builder {
-        private BreadType bread;
-        private MeatType meat;
+        private BreadType bread = BreadType.WHITE;
+        private MeatType meat = MeatType.BEEF;
 
         public Builder(BreadType bread, MeatType meat) {
             this.bread = bread;

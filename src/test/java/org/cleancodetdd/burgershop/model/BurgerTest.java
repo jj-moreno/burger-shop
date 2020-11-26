@@ -3,21 +3,27 @@ package org.cleancodetdd.burgershop.model;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static org.cleancodetdd.burgershop.model.Burger.BreadType.WHITE;
-import static org.cleancodetdd.burgershop.model.Burger.MeatType.BEEF;
+import static org.cleancodetdd.burgershop.model.Burger.BreadType.*;
+import static org.cleancodetdd.burgershop.model.Burger.MeatType.*;
 
 public class BurgerTest {
 
     @Test
-    public void should_create_burger_with_defaults_breadType_white_meatType_beef_and_given_values() {
+    public void should_create_plain_burger_with_defaults_breadType_white_meatType_beef() {
         Burger expectedBurger = new Burger.Builder().build();
         Burger actualBurger = new Burger.Builder(WHITE, BEEF).build();
-//        Assert.assertEquals(expectedBurger, actualBurger);
+        Assert.assertEquals(expectedBurger, actualBurger);
+
+    }
+
+    @Test
+    public void should_create_plain_burger_with_given_set_inputs_for_bread_and_meat() {
         Burger.Builder builder = new Burger.Builder();
-        builder.setBread("white");
-        builder.setMeat("beef");
-        Burger expectation = builder.build();
-        Assert.assertEquals(expectation, actualBurger);
+        builder.setBread("wheat");
+        builder.setMeat("chicken");
+        Burger expectedBurger = builder.build();
+        Burger actualBurger = new Burger.Builder(WHEAT, CHICKEN).build();
+        Assert.assertEquals(expectedBurger, actualBurger);
     }
     
 }
