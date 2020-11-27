@@ -4,30 +4,28 @@ import java.util.Objects;
 
 public class Burger {
 
-    public enum BreadType { WHITE, WHEAT, RYE, SOURDOUGH }
-    private final BreadType bread;
-    public enum MeatType { BEEF, CHICKEN, BLACK_BEAN }
-    private final MeatType meat;
+    private final Bread bread;
+    private final Meat meat;
 
     protected Burger(Builder builder) {
         this.bread = builder.bread;
         this.meat = builder.meat;
     }
 
-    public BreadType getBread() {
+    public Bread getBread() {
         return bread;
     }
 
-    public MeatType getMeat() {
+    public Meat getMeat() {
         return meat;
     }
 
 
     public static class Builder {
-        private BreadType bread = BreadType.WHITE;
-        private MeatType meat = MeatType.BEEF;
+        private Bread bread = Bread.WHITE;
+        private Meat meat = Meat.BEEF;
 
-        public Builder(BreadType bread, MeatType meat) {
+        public Builder(Bread bread, Meat meat) {
             this.bread = bread;
             this.meat = meat;
         }
@@ -36,20 +34,20 @@ public class Burger {
 
         public void setBread(String bread) {
             String breadEnum = bread.toUpperCase();
-            this.bread = BreadType.valueOf(breadEnum);
+            this.bread = Bread.valueOf(breadEnum);
         }
 
         public void setMeat(String meat) {
             String meatEnum = meat.toUpperCase();
-            this.meat = MeatType.valueOf(meatEnum);
+            this.meat = Meat.valueOf(meatEnum);
         }
 
-        public BreadType getBread() {
-            return bread;
+        public String getBread() {
+            return bread.toString();
         }
 
-        public MeatType getMeat() {
-            return meat;
+        public String getMeat() {
+            return meat.toString();
         }
 
         public Burger build() {

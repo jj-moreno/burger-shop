@@ -3,8 +3,8 @@ package org.cleancodetdd.burgershop.model;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import static org.cleancodetdd.burgershop.model.Burger.BreadType.*;
-import static org.cleancodetdd.burgershop.model.Burger.MeatType.*;
+import static org.cleancodetdd.burgershop.model.Bread.*;
+import static org.cleancodetdd.burgershop.model.Meat.*;
 
 public class BurgerTest {
 
