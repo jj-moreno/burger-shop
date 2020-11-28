@@ -1,5 +1,7 @@
 package org.cleancodetdd.burgershop.model;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class Burger {
@@ -20,41 +22,6 @@ public class Burger {
         return meat;
     }
 
-
-    public static class Builder {
-        private Bread bread = Bread.WHITE;
-        private Meat meat = Meat.BEEF;
-
-        public Builder(Bread bread, Meat meat) {
-            this.bread = bread;
-            this.meat = meat;
-        }
-
-        public Builder() { }
-
-        public void setBread(String bread) {
-            String breadEnum = bread.toUpperCase();
-            this.bread = Bread.valueOf(breadEnum);
-        }
-
-        public void setMeat(String meat) {
-            String meatEnum = meat.toUpperCase();
-            this.meat = Meat.valueOf(meatEnum);
-        }
-
-        public String getBread() {
-            return bread.toString();
-        }
-
-        public String getMeat() {
-            return meat.toString();
-        }
-
-        public Burger build() {
-            return new Burger(this);
-        }
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -67,5 +34,48 @@ public class Burger {
     @Override
     public int hashCode() {
         return Objects.hash(bread, meat);
+    }
+
+    public static class Builder {
+        private Bread bread;
+        private Meat meat;
+        private List<Topping> toppingList = new ArrayList<>();
+
+        public Builder(Bread bread, Meat meat) {
+            this.bread = bread;
+            this.meat = meat;
+        }
+
+        public Builder() {
+            this.bread = Bread.WHITE;
+            this.meat = Meat.BEEF;
+        }
+
+        public String getBread() {
+            return bread.toString();
+        }
+
+        public void setBread(String bread) {
+            String breadEnum = bread.toUpperCase();
+            this.bread = Bread.valueOf(breadEnum);
+        }
+
+        public String getMeat() {
+            return meat.toString();
+        }
+
+        public void setMeat(String meat) {
+            String meatEnum = meat.toUpperCase();
+            this.meat = Meat.valueOf(meatEnum);
+        }
+
+        public Builder addToppings(Topping topping) {
+            toppingList.add(topping);
+            return this;
+        }
+
+        public Burger build() {
+            return new Burger(this);
+        }
     }
 }
