@@ -5,7 +5,7 @@
     <title>Burger Confirmed</title>
 </head>
 <body>
-<h1>You successfully placed a request for a plain burger with <span th:text="${burger.meat}"></span><span
+<h1>You successfully placed a request for a <span th:if="${burger.toppingList.size() == 0}" th:text="plain"></span> burger with <span th:text="${burger.meat}"></span><span
         th:each=" topping : ${burger.toppingList}"><span
         th:text="${toppingStat.size == 1}? ' and ' + ${topping} : (${toppingStat.last}? ', and ' + ${topping} : ', ' + ${topping})"></span></span>
     on <span th:text="${burger.bread}"></span> bread.</h1>
