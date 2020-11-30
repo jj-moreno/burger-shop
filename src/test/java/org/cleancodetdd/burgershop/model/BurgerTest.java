@@ -3,6 +3,8 @@ package org.cleancodetdd.burgershop.model;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import java.util.List;
+
 import static org.cleancodetdd.burgershop.model.Bread.WHEAT;
 import static org.cleancodetdd.burgershop.model.Bread.WHITE;
 import static org.cleancodetdd.burgershop.model.Meat.BEEF;
@@ -32,16 +34,14 @@ public class BurgerTest {
     @Test
     public void should_create_beef_white_bread_burger_with_cheese_tomatoes_and_lettuce() {
         Burger expectedBurger = new Burger.Builder(WHITE, BEEF)
-                .addToppings(CHEESE)
-                .addToppings(TOMATOES)
-                .addToppings(LETTUCE)
+                .addTopping(CHEESE)
+                .addTopping(TOMATOES)
+                .addTopping(LETTUCE)
                 .build();
         Burger.Builder builder = new Burger.Builder();
         builder.setMeat("beef");
         builder.setBread("white");
-        builder.addToppings(CHEESE);
-        builder.addToppings(TOMATOES);
-        builder.addToppings(LETTUCE);
+        builder.setToppingList(List.of("cheese", "tomatoes", "lettuce"));
         Burger actualBurger = builder.build();
         Assert.assertEquals(expectedBurger, actualBurger);
     }
