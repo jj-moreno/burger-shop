@@ -5,7 +5,7 @@
     <title>Burger Maker</title>
 </head>
 <body>
-<form action="/burgerConfirmed" th:object="${builder}" method="post">
+<form action="/burger-order-confirmed" th:object="${builder}" method="post">
     <select th:field="*{bread}">
         <option value="white">White</option>
         <option value="wheat">Wheat</option>

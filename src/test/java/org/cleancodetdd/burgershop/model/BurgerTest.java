@@ -16,7 +16,9 @@ public class BurgerTest {
     @Test
     public void should_create_plain_burger_with_defaults_breadType_white_meatType_beef() {
         Burger expectedBurger = new Burger.Builder(WHITE, BEEF).build();
+
         Burger actualBurger = new Burger.Builder().build();
+
         Assert.assertEquals(expectedBurger, actualBurger);
 
     }
@@ -24,10 +26,12 @@ public class BurgerTest {
     @Test
     public void should_create_plain_burger_with_given_set_inputs_for_bread_and_meat() {
         Burger expectedBurger = new Burger.Builder(WHEAT, CHICKEN).build();
+
         Burger.Builder builder = new Burger.Builder();
         builder.setBread("wheat");
         builder.setMeat("chicken");
         Burger actualBurger = builder.build();
+
         Assert.assertEquals(expectedBurger, actualBurger);
     }
 
@@ -38,11 +42,13 @@ public class BurgerTest {
                 .addTopping(TOMATOES)
                 .addTopping(LETTUCE)
                 .build();
+
         Burger.Builder builder = new Burger.Builder();
         builder.setMeat("beef");
         builder.setBread("white");
         builder.setToppingList(List.of("cheese", "tomatoes", "lettuce"));
         Burger actualBurger = builder.build();
+
         Assert.assertEquals(expectedBurger, actualBurger);
     }
 }

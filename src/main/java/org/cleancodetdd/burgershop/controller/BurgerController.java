@@ -16,13 +16,13 @@ public class BurgerController {
         return "index";
     }
 
-    @GetMapping("/burgerMaker")
+    @GetMapping("/burger-order")
     public String makeBurgerForm(Model model) {
         model.addAttribute("builder", new Burger.Builder());
         return "make-burger";
     }
 
-    @PostMapping("/burgerConfirmed")
+    @PostMapping("/burger-order-confirmed")
     public String makeBurgerConfirm(@ModelAttribute Burger.Builder builder, Model model) {
         model.addAttribute("burger", builder.build());
         return "confirmation";
